@@ -8,4 +8,17 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="executives-working-together-laptop.png" />
+    <None Remove="large_image bg.png" />
+    <None Remove="large_image.jpg" />
+    <None Remove="large_image.png" />
+    <None Remove="logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="images\large_image.png" />
+    <Resource Include="images\logo.png" />
+  </ItemGroup>
+
 </Project>
