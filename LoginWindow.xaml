@@ -26,7 +26,6 @@
 
             <StackPanel Grid.Row="0" HorizontalAlignment="Center" Margin="0,40,0,0">
                 <Image Source="/images/logo.png" Height="100" Margin="0,0,0,10"/>
-                <TextBlock Text="Welcome to HR App" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center"/>
             </StackPanel>
 
             <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="300">
