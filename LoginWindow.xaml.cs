@@ -29,6 +29,31 @@ namespace HR
             // UsernameComboBox.ItemsSource = GetUsernamesFromDatabase();
         }
 
+
+        private void ShowPassword_Checked(object sender, RoutedEventArgs e)
+        {
+            PasswordTextBox.Text = PasswordBox.Password;
+            PasswordBox.Visibility = Visibility.Collapsed;
+            PasswordTextBox.Visibility = Visibility.Visible;
+        }
+
+        private void ShowPassword_Unchecked(object sender, RoutedEventArgs e)
+        {
+            PasswordBox.Password = PasswordTextBox.Text;
+            PasswordBox.Visibility = Visibility.Visible;
+            PasswordTextBox.Visibility = Visibility.Collapsed;
+        }
+
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (PasswordBox.Visibility == Visibility.Visible)
+            {
+                PasswordTextBox.Text = PasswordBox.Password;
+            }
+        }
+
+
+
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             string selectedUsername = UsernameComboBox.Text;
