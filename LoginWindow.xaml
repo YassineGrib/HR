@@ -9,13 +9,13 @@
         FontFamily="Segoe UI" Background="White">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
         <!-- Left side with large image -->
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Height="0" Width="0"/>
-        <Image Source="/images/large_image.png" Stretch="Uniform" Margin="10,0,0,0" />
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Height="0" Width="0" />
+        <Image Source="/images/large_image.png" Stretch="Uniform" Margin="20,0,0,0"  />
 
         <!-- Right side with login form -->
         <Grid Grid.Column="1">
