@@ -11,6 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using HR.Classes;
+
+
 
 namespace HR
 {
@@ -24,11 +27,12 @@ namespace HR
 
         private void LoadUsernames()
         {
-            // Load usernames from the database and add them to the ComboBox
-            // Example:
-            // UsernameComboBox.ItemsSource = GetUsernamesFromDatabase();
+            using (var context = new AppDbContext())
+            {
+                var usernames = context.Users.Select(u => u.Username).ToList();
+                UsernameComboBox.ItemsSource = usernames;
+            }
         }
-
 
         private void ShowPassword_Checked(object sender, RoutedEventArgs e)
         {
@@ -52,23 +56,42 @@ namespace HR
             }
         }
 
-
-
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            string selectedUsername = UsernameComboBox.Text;
+            string selectedUsername = UsernameComboBox.SelectedItem as string;
             string password = PasswordBox.Password;
 
-            // Perform login logic here
-            // Example:
-            // if (AuthenticateUser(selectedUsername, password))
-            // {
-            //     // Login successful
-            // }
-            // else
-            // {
-            //     MessageBox.Show("Invalid username or password");
-            // }
+            if (string.IsNullOrEmpty(selectedUsername) || string.IsNullOrEmpty(password))
+            {
+                MessageBox.Show("Please enter both username and password.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            using (var context = new AppDbContext())
+            {
+                var user = context.Users.FirstOrDefault(u => u.Username == selectedUsername);
+
+                if (user == null)
+                {
+                    MessageBox.Show("Invalid username.", "Login Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                if (user.Password != password)
+                {
+                    MessageBox.Show("Invalid password.", "Login Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                MessageBox.Show("Login successful!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                // Proceed to the next window or main application
+            }
+        }
+
+
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="business-people-shaking-hands-together.jpg" />
     <None Remove="executives-working-together-laptop.png" />
     <None Remove="large_image bg.png" />
     <None Remove="large_image.jpg" />
@@ -17,8 +18,26 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="images\large_image.png" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="images\left_image.jpg" />
     <Resource Include="images\logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="database\Database.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="database\Database_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
