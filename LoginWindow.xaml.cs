@@ -83,8 +83,10 @@ namespace HR
                     return;
                 }
 
-                MessageBox.Show("Login successful!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                // Proceed to the next window or main application
+                //MessageBox.Show("Login successful!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                MainWindow.isUserLoggedIn = true;
+                this.Close();
             }
         }
 

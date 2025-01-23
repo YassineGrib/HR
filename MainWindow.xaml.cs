@@ -16,9 +16,34 @@ namespace HR
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static bool isUserLoggedIn = false; // Static variable
+
         public MainWindow()
         {
             InitializeComponent();
+            CheckLoginStatus();
+        }
+
+        private void CheckLoginStatus()
+        {
+            if (!isUserLoggedIn)
+            {
+                LoginWindow loginWindow = new LoginWindow();
+                loginWindow.ShowDialog();
+
+                // Assuming LoginWindow sets a property or calls a method to indicate successful login
+                if (isUserLoggedIn)
+                {
+                    // User successfully logged in, show the main window
+
+                   
+                }
+                else
+                {
+                                       // Close the main window if the user fails to log in
+                    this.Close();
+                }
+            }
         }
     }
 }
